@@ -2,6 +2,7 @@
 const express = require("express");
 
 const postRouter = require("./routes/postRoutes");
+const categoryRouter = require("./routes/categoryRoutes");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -20,6 +21,7 @@ app.get("/hello", (req, res) => {
 });
 
 app.use("/posts", postRouter);
+app.use("/categories", categoryRouter);
 
 app.listen(3000, async () => {
   console.log("Server started");
