@@ -15,6 +15,12 @@ async function createCategory(category) {
   return newCategory;
 }
 
+/**
+ * Updates a category in the database.
+ * @param {string} categoryId - The ID of the category to update.
+ * @param {object} category - The updated category data.
+ * @returns {Promise<object>} The updated category object.
+ */
 async function updateCategory(categoryId, category) {
   const updatedCategory = await Category.findByIdAndUpdate(
     categoryId,
