@@ -40,6 +40,7 @@ postRouter.patch("/:id", async (req, res) => {
     title: req.body.title,
     body: req.body.body,
     is_published: req.body.is_published,
+    category_id: req.body.category_id,
   };
   const updatedPost = await updatePost(req.params.id, bodyData);
   if (updatedPost) {
