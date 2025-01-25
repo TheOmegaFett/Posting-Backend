@@ -31,7 +31,7 @@ postRouter.get("/:id", async (req, res) => {
 // POST - /posts
 postRouter.post("/", async (req, res) => {
   const post = await createPost(req.body);
-  res.json(post);
+  res.status(201).json(post);
 });
 
 // PATCH - /posts/:id
