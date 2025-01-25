@@ -1,21 +1,35 @@
-const posts = [
-    {
-        title: "Post 1",
-        body: "Post 1 body",
-        is_published: true
-    },
-    {
-        title: "Post 2",
-        body: "Post 2 body",
-        is_published: false
-    }
-]
+const Post = require("../models/post");
 
-function getPosts() {
-    return posts
+async function getPosts() {
+  const posts = await Post.find();
+  return posts;
+}
+
+async function getPostById(id) {
+  const post = await Post.findById(id);
+  return post;
+}
+
+async function createPost(post) {
+  const newPost = await Post.create(post);
+  return newPost;
+}
+
+async function updatePost(postId, post) {
+  const updatedPost = await Post.findByIdAndUpdate(postId, post, { new: true });
+  return updatedPost;
+}
+
+async function deletePost(postId) {
+  const deletedPost = await Post.findByIdAndDelete(postId);
+  return deletedPost;
 }
 
 // named exports
 module.exports = {
-    getPosts
-}
+  getPosts,
+  createPost,
+  getPostById,
+  updatePost,
+  deletePost,
+};

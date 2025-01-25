@@ -6,6 +6,6 @@ const PostSchema = mongoose.Schema({
   is_published: Boolean,
 });
 
-const Post = mongoose.model("Post", postSchema);
+const Post = mongoose.model("Post", PostSchema);
 
 module.exports = Post;
