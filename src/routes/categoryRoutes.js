@@ -7,10 +7,11 @@ const {
   updateCategory,
   deleteCategory,
 } = require("../controllers/categoryControllers");
+const checkIfAdmin = require("../middlewares/checkIfAdmin");
 
 const categoryRouter = express.Router();
 
-categoryRouter.get("/", async (req, res) => {
+categoryRouter.get("/", checkIfAdmin, async (req, res) => {
   const categories = await getCategories();
   res.json(categories);
 });
