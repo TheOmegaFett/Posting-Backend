@@ -1,9 +1,9 @@
 // import express
 const express = require("express");
-
+const mongoose = require("mongoose");
 const postRouter = require("./routes/postRoutes");
 const categoryRouter = require("./routes/categoryRoutes");
-const mongoose = require("mongoose");
+const commentRouter = require("./routes/commentRoutes");
 
 const app = express();
 app.use(express.json());
@@ -22,6 +22,7 @@ app.get("/hello", (req, res) => {
 
 app.use("/posts", postRouter);
 app.use("/categories", categoryRouter);
+app.use("/comments", commentRouter);
 
 app.listen(3000, async () => {
   console.log("Server started");

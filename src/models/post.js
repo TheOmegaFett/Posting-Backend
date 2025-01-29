@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const CommentSchema = mongoose.Schema({ message: String });
+
 const PostSchema = mongoose.Schema({
   title: String,
   body: String,
@@ -8,8 +10,11 @@ const PostSchema = mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "Category",
   },
+  comments: [CommentSchema],
 });
+
+const Comment = mongoose.model("Comment", CommentSchema);
 
 const Post = mongoose.model("Post", PostSchema);
 
-module.exports = Post;
+module.exports = { Comment, Post };
