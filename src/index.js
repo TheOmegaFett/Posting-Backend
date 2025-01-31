@@ -1,4 +1,3 @@
-// import express
 const express = require("express");
 const mongoose = require("mongoose");
 const postRouter = require("./routes/postRoutes");
@@ -6,10 +5,10 @@ const categoryRouter = require("./routes/categoryRoutes");
 const commentRouter = require("./routes/commentRoutes");
 const logger = require("./middlewares/logger");
 const checkIfAdmin = require("./middlewares/checkIfAdmin");
+const userRouter = require("./routes/userRoutes");
 
 const app = express();
 app.use(express.json());
-app.use(logger);
 
 app.get("/", (req, res) => {
   res.json({
@@ -26,6 +25,7 @@ app.get("/hello", (req, res) => {
 app.use("/posts", postRouter);
 app.use("/categories", categoryRouter);
 app.use("/comments", commentRouter);
+app.use("/users", userRouter);
 
 app.listen(3000, async () => {
   console.log("Server started");
